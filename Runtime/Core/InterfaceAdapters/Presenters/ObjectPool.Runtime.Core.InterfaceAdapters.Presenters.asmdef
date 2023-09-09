@@ -1,10 +1,10 @@
 {
-    "name": "Editor",
+    "name": "ObjectPool.Runtime.Core.InterfaceAdapters.Presenters",
     "rootNamespace": "",
-    "references": [],
-    "includePlatforms": [
-        "Editor"
+    "references": [
+        "GUID:d0d5af49002b00a4b8158b6f02e6a39d"
     ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
