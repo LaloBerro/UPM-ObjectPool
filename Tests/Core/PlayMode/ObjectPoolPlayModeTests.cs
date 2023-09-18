@@ -1,9 +1,9 @@
 using System.Collections;
 using NUnit.Framework;
 using ObjectPool.Runtime.Core.Domain;
-using ObjectPool.Runtime.Core.InterfaceAdapters.Presenters;
-using ObjectPool.Runtime.Core.InterfaceAdapters.RealtimeEngine;
-using ObjectPool.Runtime.Core.View;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine;
+using ObjectPool.Runtime.RecyclableObjectPools.View;
 using UnityEngine;
 using UnityEngine.TestTools;
 

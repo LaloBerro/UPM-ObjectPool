@@ -5,9 +5,9 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "ObjectPool.Runtime.Core.Domain",
-        "ObjectPool.Runtime.Core.InterfaceAdapters.Presenters",
-        "ObjectPool.Runtime.Core.InterfaceAdapters.RealtimeEngine",
-        "ObjectPool.Runtime.Core.View"
+        "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters",
+        "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine",
+        "ObjectPool.Runtime.RecyclableObjectPools.View"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

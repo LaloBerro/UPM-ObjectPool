@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ObjectPool.Runtime.Core.Domain;
 
-namespace ObjectPool.Runtime.Core.InterfaceAdapters.Presenters
+namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 {
     public class RecyclableObjectPool : IObjectPool<IRecyclableObjectView>
     {

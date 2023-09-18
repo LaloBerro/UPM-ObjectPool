@@ -1,0 +1,17 @@
+{
+    "name": "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d0d5af49002b00a4b8158b6f02e6a39d",
+        "GUID:279e3889379e55f409f99f2af06beab0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

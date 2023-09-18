@@ -1,10 +1,10 @@
 ﻿using System;
 using ObjectPool.Runtime.Core.Domain;
-using ObjectPool.Runtime.Core.InterfaceAdapters.Presenters;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ObjectPool.Runtime.Core.InterfaceAdapters.RealtimeEngine
+namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine
 {
     public class RecyclableObjectGenerator : IGenerator<IRecyclableObjectView>
     {

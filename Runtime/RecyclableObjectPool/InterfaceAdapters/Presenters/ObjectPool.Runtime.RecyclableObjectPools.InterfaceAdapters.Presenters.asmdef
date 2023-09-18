@@ -1,5 +1,5 @@
 {
-    "name": "ObjectPool.Runtime.Core.InterfaceAdapters.Presenters",
+    "name": "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters",
     "rootNamespace": "",
     "references": [
         "GUID:d0d5af49002b00a4b8158b6f02e6a39d"

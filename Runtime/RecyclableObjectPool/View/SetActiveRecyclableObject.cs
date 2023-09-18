@@ -1,7 +1,7 @@
-﻿using ObjectPool.Runtime.Core.InterfaceAdapters.Presenters;
+﻿using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
 using UnityEngine;
 
-namespace ObjectPool.Runtime.Core.View
+namespace ObjectPool.Runtime.RecyclableObjectPools.View
 {
     public class SetActiveRecyclableObject : MonoBehaviour, IRecyclableObjectView
     {

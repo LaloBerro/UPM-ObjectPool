@@ -1,4 +1,4 @@
-﻿namespace ObjectPool.Runtime.Core.InterfaceAdapters.Presenters
+﻿namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 {
     public interface IRecyclableObjectView
     {
