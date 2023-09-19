@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using NUnit.Framework;
 using ObjectPool.Runtime.Core.Domain;
 using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
@@ -100,6 +101,28 @@ namespace ObjectPool.Tests.PlayMode.Core
             //Assert
             int poolSize = _objectPool.GetPoolSize();
             Assert.AreEqual(poolSize, 0);
+        }
+        
+        [UnityTest]
+        public IEnumerator GetObjects_PoolSizeIsNotBiggerThatMax()
+        {
+            yield return null;
+            
+            //Arrange
+            int maxPoolSize = 5;
+            _objectPool = new RecyclableObjectPool(_generator, maxPoolSize);
+
+            List<IRecyclableObjectView> _recyclableObjects = new List<IRecyclableObjectView>();
+
+            //Act
+            for (int i = 0; i < maxPoolSize * 2; i++)
+            {
+                _recyclableObjects.Add(_objectPool.GetObject());
+            }
+
+            //Assert
+            int poolSize = _objectPool.GetPoolSize();
+            Assert.AreEqual(maxPoolSize,  poolSize);
         }
     }   
 }

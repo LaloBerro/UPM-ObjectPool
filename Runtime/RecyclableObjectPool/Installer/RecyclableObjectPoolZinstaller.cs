@@ -10,7 +10,7 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.Installers
     public class RecyclableObjectPoolZinstaller : InstanceZinstaller<IObjectPool<IRecyclableObjectView>>
     {
         [Header("Config")]
-        private int _maxInstancedObjects;
+        [SerializeField] private int _maxInstancedObjects;
         
         [Inject]
         private IGenerator<IRecyclableObjectView> _recyclableObjectGenerator;

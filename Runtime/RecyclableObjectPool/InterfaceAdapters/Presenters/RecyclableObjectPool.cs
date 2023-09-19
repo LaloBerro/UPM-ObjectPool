@@ -41,7 +41,7 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
                 recyclableObjectView = _objectsPool.Dequeue();
                 return recyclableObjectView;
             }
-
+            
             bool isThePoolFull = IsThePoolFull();
             if (isThePoolFull)
             {
@@ -60,14 +60,16 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 
         private bool IsThePoolFull()
         {
-            return _objectsPool.Count >= _maxInstancedObjects;
+            return _objectsInUse.Count >= _maxInstancedObjects;
         }
         
         private IRecyclableObjectView GetObjectInUse()
         {
             IRecyclableObjectView recyclableObjectView = _objectsInUse[0];
+            
+            recyclableObjectView.Recycle();
 
-            RecycleObject(recyclableObjectView);
+            _objectsInUse.Remove(recyclableObjectView);
 
             return recyclableObjectView;
         }
