@@ -6,7 +6,7 @@ using ZenjectExtensions.Zinstallers;
 
 namespace ObjectPool.Runtime.RecyclableObjectPools.Installers
 {
-    public class RecyclableObjectGeneratorZinstaller : InstanceZinstaller<IGenerator<IRecyclableObjectView>>
+    public class RecyclableObjectGeneratorZinstaller : CachedInstanceZinstaller<IGenerator<IRecyclableObjectView>>
     {
         [Header("References")] 
         [SerializeField] private Transform _parentTransform;

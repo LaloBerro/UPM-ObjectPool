@@ -7,7 +7,7 @@ using ZenjectExtensions.Zinstallers;
 
 namespace ObjectPool.Runtime.RecyclableObjectPools.Installers
 {
-    public class RecyclableObjectPoolZinstaller : InstanceZinstaller<IObjectPool<IRecyclableObjectView>>
+    public class RecyclableObjectPoolZinstaller : CachedInstanceZinstaller<IObjectPool<IRecyclableObjectView>>
     {
         [Header("Config")]
         [SerializeField] private int _maxInstancedObjects;
