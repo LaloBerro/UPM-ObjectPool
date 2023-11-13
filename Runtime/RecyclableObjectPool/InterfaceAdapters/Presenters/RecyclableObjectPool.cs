@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ObjectPool.Runtime.Core.Domain;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Observers;
 
 namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 {
@@ -10,11 +12,14 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
         
         private readonly Queue<IRecyclableObjectView> _objectsPool;
         private readonly List<IRecyclableObjectView> _objectsInUse;
+
+        private readonly ICustomObjectToRealtimeObjectObserver<IRecyclableObjectView> _customObjectToRealtimeObjectObserver;
         
-        public RecyclableObjectPool(IGenerator<IRecyclableObjectView> recyclableObjectGenerator, int maxInstancedObjects)
+        public RecyclableObjectPool(IGenerator<IRecyclableObjectView> recyclableObjectGenerator, int maxInstancedObjects, ICustomObjectToRealtimeObjectObserver<IRecyclableObjectView> customObjectToRealtimeObjectObserver)
         {
             _recyclableObjectGenerator = recyclableObjectGenerator;
             _maxInstancedObjects = maxInstancedObjects;
+            _customObjectToRealtimeObjectObserver = customObjectToRealtimeObjectObserver;
 
             _objectsPool = new Queue<IRecyclableObjectView>();
             _objectsInUse = new List<IRecyclableObjectView>();
@@ -27,6 +32,8 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
             _objectsInUse.Add(recyclableObjectView);
 
             recyclableObjectView.Init();
+            
+            _customObjectToRealtimeObjectObserver.MapCustomObjectAndNotify(recyclableObjectView);
 
             return recyclableObjectView;
         }

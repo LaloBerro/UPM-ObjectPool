@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using ObjectPool.Runtime.Core.Domain;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Observers;
 using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
 using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine;
+using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Repositories;
 using ObjectPool.Runtime.RecyclableObjectPools.View;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -12,6 +14,10 @@ namespace ObjectPool.Tests.PlayMode.Core
 {
     public class ObjectPoolPlayModeTests
     {
+        private ICustomObjectToRealtimeObjectObserver<IRecyclableObjectView> _customObjectToRealtimeObjectObserver;
+        private IRealtimeObjectRepository<IRecyclableObjectView, GameObject> _realtimeObjectRepository;
+        private IObjectObserver<GameObject> _objectObserver;
+        
         private IObjectPool<IRecyclableObjectView> _objectPool;
         private IGenerator<IRecyclableObjectView> _generator;
         private int _maxPoolSize = 100;
@@ -22,9 +28,13 @@ namespace ObjectPool.Tests.PlayMode.Core
             Transform parentTransform = new GameObject("Parent").transform;
             GameObject recyclableGameObject = new GameObject("Recyclable");
             recyclableGameObject.AddComponent<SetActiveRecyclableObject>();
+
+            _objectObserver = new ObjectObserver<GameObject>();
+            _realtimeObjectRepository = new RealtimeObjectRepository<IRecyclableObjectView, GameObject>();
+            _customObjectToRealtimeObjectObserver = new RecyclableObjectViewToGameObjectObserver(_realtimeObjectRepository, _objectObserver);
             
-            _generator = new RecyclableObjectGenerator(parentTransform, recyclableGameObject);
-            _objectPool = new RecyclableObjectPool(_generator, _maxPoolSize);
+            _generator = new RecyclableObjectGenerator(parentTransform, recyclableGameObject, _realtimeObjectRepository);
+            _objectPool = new RecyclableObjectPool(_generator, _maxPoolSize, _customObjectToRealtimeObjectObserver);
         }
 
         [TearDown]
@@ -110,7 +120,7 @@ namespace ObjectPool.Tests.PlayMode.Core
             
             //Arrange
             int maxPoolSize = 5;
-            _objectPool = new RecyclableObjectPool(_generator, maxPoolSize);
+            _objectPool = new RecyclableObjectPool(_generator, maxPoolSize, _customObjectToRealtimeObjectObserver);
 
             List<IRecyclableObjectView> _recyclableObjects = new List<IRecyclableObjectView>();
 

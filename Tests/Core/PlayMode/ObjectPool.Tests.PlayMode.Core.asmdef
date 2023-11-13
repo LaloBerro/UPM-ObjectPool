@@ -7,7 +7,9 @@
         "ObjectPool.Runtime.Core.Domain",
         "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters",
         "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.RealtimeEngine",
-        "ObjectPool.Runtime.RecyclableObjectPools.View"
+        "ObjectPool.Runtime.RecyclableObjectPools.View",
+        "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Repositories",
+        "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Observers"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

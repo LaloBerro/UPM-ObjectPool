@@ -1,9 +1,8 @@
 {
-    "name": "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters",
+    "name": "ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Repositories",
     "rootNamespace": "",
     "references": [
-        "GUID:d0d5af49002b00a4b8158b6f02e6a39d",
-        "GUID:bfd16c2ff4447e648a12459f4af26ed7"
+        "GUID:279e3889379e55f409f99f2af06beab0"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

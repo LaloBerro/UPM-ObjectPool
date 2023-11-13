@@ -1,3 +1,5 @@
+using System;
+
 namespace ObjectPool.Runtime.Core.Domain
 {
     public interface IObjectPool<TObject>
