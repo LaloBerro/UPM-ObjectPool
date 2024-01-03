@@ -1,4 +1,3 @@
-
 using ObjectPool.Runtime.Core.Domain;
 using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Observers;
 using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters;
@@ -25,5 +24,3 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.Installers
         }
     }
 }
-
-

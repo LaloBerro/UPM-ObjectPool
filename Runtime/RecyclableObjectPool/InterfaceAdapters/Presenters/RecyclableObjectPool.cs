@@ -5,7 +5,7 @@ using ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Observers;
 
 namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 {
-    public class RecyclableObjectPool : IObjectPool<IRecyclableObjectView>
+    public class RecyclableObjectPool : IObjectPool<IRecyclableObjectView>, IDisposable
     {
         private readonly IGenerator<IRecyclableObjectView> _recyclableObjectGenerator;
         private readonly int _maxInstancedObjects;
@@ -42,14 +42,14 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
         {
             IRecyclableObjectView recyclableObjectView;
 
-            bool thereAreObjectInThePool = ThereAreObjectInThePool();
+            bool thereAreObjectInThePool = _objectsPool.Count > 0;
             if (thereAreObjectInThePool)
             {
                 recyclableObjectView = _objectsPool.Dequeue();
                 return recyclableObjectView;
             }
             
-            bool isThePoolFull = IsThePoolFull();
+            bool isThePoolFull = _objectsInUse.Count >= _maxInstancedObjects;
             if (isThePoolFull)
             {
                 recyclableObjectView = GetObjectInUse();
@@ -58,16 +58,6 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
 
             recyclableObjectView = _recyclableObjectGenerator.GetGeneratedObject();
             return recyclableObjectView;
-        }
-        
-        private bool ThereAreObjectInThePool()
-        {
-            return _objectsPool.Count > 0;
-        }
-
-        private bool IsThePoolFull()
-        {
-            return _objectsInUse.Count >= _maxInstancedObjects;
         }
         
         private IRecyclableObjectView GetObjectInUse()
@@ -101,6 +91,11 @@ namespace ObjectPool.Runtime.RecyclableObjectPools.InterfaceAdapters.Presenters
         public int GetPoolSize()
         {
             return _objectsInUse.Count;
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

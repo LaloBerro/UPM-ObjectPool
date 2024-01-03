@@ -1,6 +1,6 @@
 {
   "name": "com.lalo.objectpool",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "displayName": "ObjectPool",
   "unity": "2020.3",
   "unityRelease": "0b5",
@@ -19,7 +19,7 @@
     {
       "displayName": "Samples",
       "description": "",
-      "path": "Samples~/ObjectPoolInstallers"
+      "path": "Samples~/ObjectPool"
     }
   ]
 }
